@@ -11,6 +11,7 @@ function circulation () {
     pins.digitalWritePin(DigitalPin.P2, 0)
     pins.digitalWritePin(DigitalPin.P1, 1)
     basic.pause(3500)
+    pins.digitalWritePin(DigitalPin.P8, 1)
     pins.digitalWritePin(DigitalPin.P1, 0)
 }
 function clingnotement_orange () {
@@ -62,9 +63,7 @@ pietion = 0
 let temp_pieton = 0
 basic.forever(function () {
     while (pietion != 1) {
-        pins.digitalWritePin(DigitalPin.P8, 1)
         circulation()
-        pins.digitalWritePin(DigitalPin.P8, 1)
     }
     temp_pieton = 1
     pieton()
@@ -79,5 +78,6 @@ basic.forever(function () {
 basic.forever(function () {
     while (temp_pieton != 0) {
         clingnotement_orange()
+        temp_pieton = 0
     }
 })
